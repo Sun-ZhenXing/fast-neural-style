@@ -11,37 +11,25 @@
 
 [*Perceptual Losses for Real-Time Style Transfer and Super-Resolution*](https://arxiv.org/abs/1603.08155) 的实现，在 [此项目的官方网站](https://cs.stanford.edu/people/jcjohns/eccv16/) 上，可以查看论文和其效果，推荐阅读。
 
-此项目的原始代码托管在 GitHub 上：[jcjohnson/fast-neural-style](https://github.com/jcjohnson/fast-neural-style)，可以下载其预训练权重直接部署。
+此项目的原始实现（Lua）可以参考 [jcjohnson/fast-neural-style](https://github.com/jcjohnson/fast-neural-style)，可以下载其预训练权重进行部署。
 
 ## 2. 下载 Torch 模型文件
-
-- [instance_norm/candy.t7](http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/instance_norm/candy.t7)
-- [instance_norm/la_muse.t7](http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/instance_norm/la_muse.t7)
-- [instance_norm/mosaic.t7](http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/instance_norm/mosaic.t7)
-- [instance_norm/feathers.t7](http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/instance_norm/feathers.t7)
-- [instance_norm/the_scream.t7](http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/instance_norm/the_scream.t7)
-- [instance_norm/udnie.t7](http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/instance_norm/udnie.t7)
-- [eccv16/the_wave.t7](http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/eccv16/the_wave.t7)
-- [eccv16/starry_night.t7](http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/eccv16/starry_night.t7)
-- [eccv16/la_muse.t7](http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/eccv16/la_muse.t7)
-- [eccv16/composition_vii.t7](http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/eccv16/composition_vii.t7)
 
 下载完成后保存到：
 
 - `models/`
     - `eccv16/`
-        - `composition_vii.t7`
-        - `la_muse.t7`
-        - `starry_night.t7`
-        - `the_wave.t7`
+        - [`composition_vii.t7`](http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/eccv16/composition_vii.t7)
+        - [`la_muse.t7`](http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/eccv16/la_muse.t7)
+        - [`starry_night.t7`](http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/eccv16/starry_night.t7)
+        - [`the_wave.t7`](http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/eccv16/the_wave.t7)
     - `instance_norm/`
-        - `candy.t7`
-        - `feathers.t7`
-        - `la_muse.t7`
-        - `mosaic.t7`
-        - `the_scream.t7`
-        - `udnie.t7`
-- `test.jpg`
+        - [`candy.t7`](http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/instance_norm/candy.t7)
+        - [`feathers.t7`](http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/instance_norm/feathers.t7)
+        - [`la_muse.t7`](http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/instance_norm/la_muse.t7)
+        - [`mosaic.t7`](http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/instance_norm/mosaic.t7)
+        - [`the_scream.t7`](http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/instance_norm/the_scream.t7)
+        - [`udnie.t7`](http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/instance_norm/udnie.t7)
 
 ## 3. 使用 VS Code 打开项目
 
@@ -116,3 +104,7 @@ cd ../..
 ```
 
 切换到项目根目录，然后再次运行。
+
+## License | 开源许可
+
+MIT License.
