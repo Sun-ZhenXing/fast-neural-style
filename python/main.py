@@ -1,5 +1,8 @@
 import cv2
 import numpy as np
+import sys
+
+VGG_MEAN = (103.939, 116.779, 123.680)
 
 
 class Model:
@@ -18,14 +21,14 @@ class Model:
 def load_model(model_path: str) -> cv2.dnn.Net:
     net = cv2.dnn.readNetFromTorch(model_path)
     if net.empty():
-        print('load model failed')
+        print('[Error] load model failed!')
         exit(-1)
     if cv2.cuda.getCudaEnabledDeviceCount() > 0:
-        print('use cuda')
+        print('>> use cuda')
         net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
         net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
     else:
-        print('use cpu')
+        print('>> use cpu')
         net.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
         net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
     return net
@@ -37,16 +40,16 @@ def process(image: np.ndarray, net) -> np.ndarray:
         image,
         1.0,
         (w, h),
-        (103.939, 116.779, 123.680),
+        VGG_MEAN,
         swapRB=False,
         crop=False
     )
     net.setInput(blob)
     out: np.ndarray = net.forward()
     out = out.reshape(3, out.shape[2], out.shape[3])
-    out[0, :] += 103.939
-    out[1, :] += 116.779
-    out[2, :] += 123.68
+    out[0, :] += VGG_MEAN[0]
+    out[1, :] += VGG_MEAN[1]
+    out[2, :] += VGG_MEAN[2]
     out = out.transpose(1, 2, 0)
     out = out.clip(0, 255).astype(np.uint8)
     return out
@@ -62,16 +65,17 @@ def show_frame(frame: np.ndarray, out: np.ndarray) -> int:
 
 
 def main():
-    print('press q to exit')
+    print('>> press q to exit.')
+    print('>> press s to save.')
     cap = cv2.VideoCapture(0)
     net = load_model(Model.STARRY_NIGHT)
     if not cap.isOpened():
-        print('open camera failed')
+        print('[Error] open camera failed!')
         exit(-1)
     while cap.isOpened():
         ret, frame = cap.read()
         if not ret or frame is None:
-            print('frame is empty')
+            print('[Error] frame is empty!')
             break
         out = process(frame, net)
         if show_frame(frame, out) == ord('q'):

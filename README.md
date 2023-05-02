@@ -8,7 +8,6 @@
 
 [查看我的博客](https://blog.alexsun.top/vuepress-opencv-notes/awesome/fast-neural-style/) 阅读更多关于快速风格迁移的内容。
 
-
 [*Perceptual Losses for Real-Time Style Transfer and Super-Resolution*](https://arxiv.org/abs/1603.08155) 的实现，在 [此项目的官方网站](https://cs.stanford.edu/people/jcjohns/eccv16/) 上，可以查看论文和其效果，推荐阅读。
 
 此项目的原始实现（Lua）可以参考 [jcjohnson/fast-neural-style](https://github.com/jcjohnson/fast-neural-style)，可以下载其预训练权重进行部署。
@@ -31,9 +30,7 @@
         - [`the_scream.t7`](http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/instance_norm/the_scream.t7)
         - [`udnie.t7`](http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/instance_norm/udnie.t7)
 
-## 3. 使用 VS Code 打开项目
-
-### 3.1 Python 版本
+## 3. Python 版本
 
 需要 Python >= 3.7，依赖：
 - `opencv-python>=4.5`，建议自行编译 CUDA 版本
@@ -42,10 +39,12 @@
 运行 Python 脚本：
 
 ```bash
-python python/main.py
+python python/main.py models/eccv16/starry_night.t7
 ```
 
-### 3.2 C++ 版本
+## 4. C++ 版本
+
+### 4.1 必要条件
 
 需要安装的依赖：
 - Visual Studio 2019 / 2022
@@ -55,6 +54,8 @@ python python/main.py
 需要安装的 VS Code 插件：
 - C/C++
 - CMake
+
+### 4.2 配置 VS Code
 
 这里是我的配置项目，请根据自己的配置调整。使用 Visual Studio 2022 [Release] x64 - amd64，在 `.vscode/settings.json` 配置：
 
@@ -95,6 +96,10 @@ python python/main.py
 }
 ```
 
+这一步需要根据你安装的 Windows SDK 和 MSVC 版本进行调整。
+
+### 4.3 运行
+
 首先，使用 F1 打开 VS Code 命令面板，输入 `CMake: Configure`，选择 `x64-Release`，等待 CMake 完成配置。
 
 然后在下方点击运行即可，如果出现没有找到模型的错误，可以执行：
@@ -105,6 +110,6 @@ cd ../..
 
 切换到项目根目录，然后再次运行。
 
-## License | 开源许可
+## 5. License | 开源许可
 
 MIT License.
